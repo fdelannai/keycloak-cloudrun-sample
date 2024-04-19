@@ -10,11 +10,13 @@ steps:
 #    entrypoint: gcloud
 #    args: ['run', 'deploy', 'keycloak-on-cloudrun', '--image', '$_IMAGE_PATH_SHA', '--region', '$LOCATION']
 substitutions:
-  _IMAGE_NAME: 'ineat-keycloak-on-cloudrun'
+  _IMAGE_NAME: 'mbcloud-keycloak'
   _IMAGE_PATH_SHA: 'europe-west1-docker.pkg.dev/${PROJECT_ID}/docker-registry/${_IMAGE_NAME}:${SHORT_SHA}'
+  _IMAGE_PATH_KC_VERSION: 'europe-west1-docker.pkg.dev/${PROJECT_ID}/docker-registry/${_IMAGE_NAME}:${_KEYCLOAK_VERSION}'
   _KEYCLOAK_VERSION: 20.0.2
 images:
   - '${_IMAGE_PATH_SHA}'
+  - '${_IMAGE_PATH_KC_VERSION}'
 
 options:
   dynamic_substitutions: true
