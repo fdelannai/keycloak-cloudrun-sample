@@ -4,7 +4,7 @@ steps:
 #    entrypoint: mvn
 #    args: [ '-pl','kc-extensions','-amd','clean','package' ]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--build-arg', 'KEYCLOAK_VERSION=${_KEYCLOAK_VERSION}', '-t', '${_IMAGE_PATH_SHA}', '.']
+    args: ['build', '--build-arg', 'KEYCLOAK_VERSION=${_KEYCLOAK_VERSION}', '-t', '${_IMAGE_PATH_SHA}', '-t', '${_IMAGE_PATH_KC_VERSION}', '.']
   # Automatically build and Deploy container image to Cloud Run
 #  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
 #    entrypoint: gcloud
